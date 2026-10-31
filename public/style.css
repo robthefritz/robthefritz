@@ -355,6 +355,30 @@ section {
   color: var(--ink);
 }
 
+/* ===== Draft Label ===== */
+.draft-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background-color: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 0.5rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h2 .draft-label {
+  font-size: 0.625rem;
+  vertical-align: middle;
+}
+
+.principle-title .draft-label {
+  font-size: 0.625rem;
+}
+
 /* ===== Timeline Section ===== */
 #timeline {
   max-width: 56rem;
