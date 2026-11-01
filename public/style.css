@@ -14,46 +14,50 @@ html {
 
 /* ===== Color Scheme: Light (default) ===== */
 :root {
-  --paper: #F4EEE2;
-  --surface: #FBF7EE;
-  --ink: #2A2520;
-  --ink-soft: #6A6050;
-  --rule: #DDD3C0;
-  --accent: #7A3B1E;
+  --paper: #FAFAF7;
+  --surface: #FFFFFF;
+  --ink: #1C1F24;
+  --ink-soft: #5A6068;
+  --rule: #E3E3DD;
+  --accent: #3D6350;
+  --accent-ink: #FFFFFF;
   --gold: #C9A84C;
 }
 
 /* ===== Color Scheme: Dark ===== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #1A1610;
-    --surface: #221E18;
-    --ink: #F0E8D8;
-    --ink-soft: #A89E8A;
-    --rule: #3A3428;
-    --accent: #B56A3A;
+    --paper: #111418;
+    --surface: #181C22;
+    --ink: #ECEDEF;
+    --ink-soft: #A3A9B1;
+    --rule: #2A2F37;
+    --accent: #7FB89A;
+    --accent-ink: #0E1116;
     --gold: #C9A84C;
   }
 }
 
 /* Manual theme overrides */
 :root[data-theme="light"] {
-  --paper: #F4EEE2;
-  --surface: #FBF7EE;
-  --ink: #2A2520;
-  --ink-soft: #6A6050;
-  --rule: #DDD3C0;
-  --accent: #7A3B1E;
+  --paper: #FAFAF7;
+  --surface: #FFFFFF;
+  --ink: #1C1F24;
+  --ink-soft: #5A6068;
+  --rule: #E3E3DD;
+  --accent: #3D6350;
+  --accent-ink: #FFFFFF;
   --gold: #C9A84C;
 }
 
 :root[data-theme="dark"] {
-  --paper: #1A1610;
-  --surface: #221E18;
-  --ink: #F0E8D8;
-  --ink-soft: #A89E8A;
-  --rule: #3A3428;
-  --accent: #B56A3A;
+  --paper: #111418;
+  --surface: #181C22;
+  --ink: #ECEDEF;
+  --ink-soft: #A3A9B1;
+  --rule: #2A2F37;
+  --accent: #7FB89A;
+  --accent-ink: #0E1116;
   --gold: #C9A84C;
 }
 
@@ -69,7 +73,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   line-height: 1.2;
   font-weight: 600;
 }
@@ -112,7 +116,7 @@ header {
 }
 
 .header-content {
-  max-width: 56rem;
+  max-width: 60rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -122,8 +126,10 @@ header {
 }
 
 .header-name {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   font-weight: 600;
   font-size: 1.125rem;
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 
@@ -196,9 +202,9 @@ nav a:focus {
 
 /* ===== Main Layout ===== */
 main {
-  max-width: 44rem;
+  max-width: 60rem;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1.25rem;
 }
 
 section {
@@ -217,8 +223,19 @@ section {
   border-bottom: 2px solid var(--gold);
 }
 
+.eyebrow {
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  margin: 0 0 0.75rem;
+}
+
 .hero h1 {
-  margin-bottom: 0.75rem;
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 1rem;
+  max-width: 18ch;
 }
 
 .headline {
@@ -229,22 +246,37 @@ section {
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: 1.1875rem;
   color: var(--ink-soft);
-  margin-bottom: 1.5rem;
+  max-width: 36rem;
+  margin: 0 0 1.75rem;
 }
 
 .hero-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .hero-links .button-primary,
+  .hero-links .button-secondary {
+    flex: 1 1 100%;
+  }
+  
+  .contact-links .button-primary,
+  .contact-links .button-secondary {
+    flex: 1 1 100%;
+  }
 }
 
 /* ===== Buttons ===== */
 .button-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--accent);
-  color: var(--paper);
+  color: var(--accent-ink);
   padding: 0.6rem 1.1rem;
   border-radius: 6px;
   text-decoration: none;
@@ -253,9 +285,6 @@ section {
   cursor: pointer;
   min-height: 44px;
   min-width: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .button-secondary {
@@ -303,8 +332,8 @@ section {
 }
 
 .now-label {
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  font-size: 0.875rem;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: 0.9375rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -322,7 +351,7 @@ section {
 }
 
 .now-updated {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--ink-soft);
   margin-top: 1rem;
 }
@@ -357,7 +386,7 @@ section {
 
 /* ===== Draft Label ===== */
 .draft-label {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--ink-soft);
   background-color: var(--surface);
@@ -371,17 +400,17 @@ section {
 }
 
 h2 .draft-label {
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   vertical-align: middle;
 }
 
 .principle-title .draft-label {
-  font-size: 0.625rem;
+  font-size: 0.875rem;
 }
 
 /* ===== Timeline Section ===== */
 #timeline {
-  max-width: 56rem;
+  max-width: 60rem;
 }
 
 .employer-heading {
@@ -479,7 +508,7 @@ details.timeline-entry.current .timeline-marker {
 }
 
 .timeline-years {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--ink-soft);
   white-space: nowrap;
 }
@@ -570,7 +599,7 @@ details.timeline-entry.current .timeline-marker {
 
 .contact-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -598,9 +627,9 @@ a:focus {
 
 /* ===== Footer ===== */
 footer {
-  max-width: 44rem;
+  max-width: 60rem;
   margin: 4rem auto 2rem;
-  padding: 2rem 1rem 2rem;
+  padding: 2rem 1.25rem 2rem;
   border-top: 1px solid var(--rule);
   text-align: center;
   display: flex;
@@ -610,7 +639,7 @@ footer {
 }
 
 footer p {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--ink-soft);
 }
 
@@ -626,8 +655,9 @@ footer p {
     --ink: #000000;
     --ink-soft: #444444;
     --rule: #cccccc;
-    --accent: #000000;
-    --gold: #666666;
+    --accent: #3D6350;
+    --accent-ink: #ffffff;
+    --gold: #C9A84C;
   }
 
   body {
@@ -700,7 +730,7 @@ footer p {
 
   a[href^="http"]::after {
     content: " (" attr(href) ")";
-    font-size: 9pt;
+    font-size: 10pt;
     color: #666666;
   }
 
