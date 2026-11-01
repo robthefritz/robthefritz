@@ -456,7 +456,7 @@ details.timeline-entry summary::-webkit-details-marker {
   display: none;
 }
 
-details.timeline-entry summary::after {
+details.timeline-entry:has(.timeline-details) summary::after {
   content: '';
   position: absolute;
   right: 0;
@@ -469,7 +469,7 @@ details.timeline-entry summary::after {
   transition: transform 150ms ease;
 }
 
-details.timeline-entry[open] summary::after {
+details.timeline-entry[open]:has(.timeline-details) summary::after {
   transform: rotate(180deg);
 }
 
