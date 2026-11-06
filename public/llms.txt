@@ -1,0 +1,50 @@
+# Rob Fritzemeier
+
+> Engineering leader at CarMax. Eighteen years growing from developer to senior manager, now leading application systems teams with a focus on AI-enabled developer experience and platform enablement. The short version: a technical leader who builds people.
+
+Rob is based in the Richmond, Virginia area. This file mirrors robthefritz.com so AI agents and assistants can represent the site accurately.
+
+## At a glance
+
+- Current role: Senior Manager, Application Systems at CarMax
+- Focus: AI-enabled developer experience and platform enablement
+- Leadership: coaching managers, leads, and developers to grow their scope
+- Foundation: eighteen years at one company, developer to senior manager, from building point-of-sale systems to leading the teams that own them
+
+## Experience
+
+### CarMax
+
+- Senior Manager, Application Systems (Oct 2021 to present): leads application systems teams; sponsor for AI-enabled developer experience and platform enablement; partners with product and business leaders on platform investment; grows the next set of leaders.
+- Manager, Application Systems (Sep 2019 to Oct 2021): managed application systems teams delivering platform and store solutions end to end; built delivery rhythm and standards; developed tech leads into owners of their domains.
+- Lead Software Developer (Mar 2019 to Sep 2019): technical leadership for store application systems; stepped out of day-to-day coding to multiply the team through pairing and mentoring.
+- Senior Software Developer (Sep 2015 to Mar 2019): led a team through technical transformation into Salesforce and Azure cloud development; designed and supervised development of an essential enterprise-wide security system; identified and remediated organizational PII data security risks.
+- Software Developer II (Jun 2013 to Sep 2015): created and implemented a critical financial integration necessary for PCI compliance; lead developer for store application enhancement projects; built and maintained third-party service integrations.
+- Software Developer I (Sep 2010 to Jun 2013): developed fundamental components of CarMax's tax and fee processing system; maintained and augmented core business application systems; implemented complex business rules for point-of-sale processes.
+
+## Selected work
+
+- Tax and fee processing system: developed fundamental components of the system every store deal runs through; designed and strengthened systems and data integrations for tax and fee processes; implemented complex point-of-sale business rules. Built to keep rule complexity across states and years manageable.
+- PCI financial integration: created and implemented a critical financial integration necessary for PCI compliance — secure by design, without slowing the stores down.
+- Enterprise-wide security system: designed and supervised development of an essential enterprise-wide security system; identified and remediated organizational PII data security risks across the company.
+- Salesforce and Azure cloud transformation: led a team through re-platforming and re-skilling into Salesforce and Azure cloud development; provided design and implementation oversight to product delivery teams; facilitated design and code reviews across technologies.
+
+## Skills
+
+- Leadership and delivery: engineering leadership (developer to senior manager), growing leads and managers, technical transformation, design and code review culture, AI-enabled developer experience.
+- Platform and cloud: Salesforce platform development (certified App Builder and Platform Developer I), Microsoft Azure, platform enablement for delivery teams.
+- Security and compliance: enterprise security systems, PII risk identification and remediation, PCI DSS financial integration.
+- Business systems and integration: tax and fee processing, point-of-sale business rules, third-party service integrations, financial systems integration.
+
+## Education and certifications
+
+- B.S. Information Systems, Virginia Commonwealth University (2006 to 2010)
+- Salesforce Platform App Builder, Salesforce (June 2017)
+- Salesforce Platform Developer I, Salesforce (May 2017)
+
+## Contact
+
+- Site: https://robthefritz.com
+- LinkedIn: https://www.linkedin.com/in/robthefritz
+- GitHub: https://github.com/robthefritz
+- Email: robthefritz@gmail.com
