@@ -322,6 +322,47 @@ section {
   }
 }
 
+/* ===== At a Glance ===== */
+.at-a-glance {
+  background-color: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 4rem;
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 0;
+}
+
+.glance-item dt {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  margin-bottom: 0.25rem;
+}
+
+.glance-item dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .at-a-glance {
+    margin-bottom: 3rem;
+  }
+
+  .glance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Now Card ===== */
 .now-card {
   background-color: var(--surface);
@@ -475,7 +516,11 @@ details.timeline-entry[open]:has(.timeline-details) summary::after {
 
 .timeline-marker {
   position: absolute;
-  left: 0;
+  /* Anchored to the summary (which is position:relative for the expand arrow).
+     The negative offset pulls the dot back through .timeline-entry's 1.5rem and
+     .timeline's 2rem padding so it centers on the timeline spine at
+     .timeline::before's left:4px instead of sitting on top of the title text. */
+  left: calc(-3.5rem - 0.5px);
   top: 6px;
   width: 10px;
   height: 10px;
@@ -557,6 +602,85 @@ details.timeline-entry.current .timeline-marker {
 
 .work-card p {
   color: var(--ink);
+}
+
+/* Learn-more expandable slot on work cards (native details, same pattern as timeline) */
+.work-more {
+  margin-top: 1rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.25rem;
+}
+
+.work-more summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--accent);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.work-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.work-more summary::before {
+  content: '▸';
+  transition: transform 150ms ease;
+}
+
+.work-more[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.work-more summary:hover {
+  opacity: 0.85;
+}
+
+.work-more p {
+  margin-top: 0.25rem;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .work-more summary::before {
+    transition: transform 150ms ease;
+  }
+}
+
+/* ===== Skills Section ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.skill-group h3 {
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.skill-group ul {
+  list-style: disc;
+  margin-left: 1.25rem;
+}
+
+.skill-group li {
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.skill-group li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===== Education Section ===== */
@@ -672,6 +796,7 @@ footer p {
   .hero-links,
   .contact-links,
   #theme-toggle,
+  .work-more,
   summary::after {
     display: none;
   }
