@@ -34,7 +34,7 @@ You can also open `public/index.html` directly in a browser, though the theme to
 
 ## Deploys
 
-Merges to `main` auto-deploy `public/` (no build step) to the existing Cloudflare Pages project `robthefritz` (direct upload, production branch `main`) via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Same-repository pull requests get a Pages preview for the PR branch; the preview URL is posted on the PR and updated in place. Fork pull requests are not deployed.
+Merges to `main` auto-deploy `public/` (no build step) to the existing Cloudflare Pages project `robthefritz` (direct upload, production branch `main`) via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Same-repository pull requests targeting `main` get a Pages preview for the PR branch; the preview URL is posted on the PR and updated in place. Fork pull requests and PRs whose head branch is `main` are not deployed.
 
 GitHub Actions uses repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Point `robthefritz.com` at the Pages project in the Cloudflare dashboard.
 

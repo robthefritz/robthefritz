@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 # Serialize uploads to the robthefritz Pages project. Never cancel a running
 # production deploy (or any in-flight upload) when a newer run is queued.
@@ -35,13 +37,31 @@ jobs:
           command: pages deploy public --project-name=robthefritz --branch=main
 
   preview:
-    # Same-repo pull_request only — never deploy or comment on fork PRs.
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    # Same-repo PRs into main only. Never --branch=main (that is production).
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.base_ref == 'main' && github.head_ref != 'main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
+    env:
+      PAGES_BRANCH: ${{ github.head_ref }}
     steps:
+      - name: Guard preview branch
+        run: |
+          set -eu
+          if [ -z "${PAGES_BRANCH}" ] || [ "${PAGES_BRANCH}" = "main" ]; then
+            echo "Refusing Pages preview for branch '${PAGES_BRANCH:-empty}'" >&2
+            exit 1
+          fi
+          # Keep the value a single @actions/exec argv token after wrangler-action
+          # concatenates `command` (spawn, no shell — but whitespace still splits).
+          case "${PAGES_BRANCH}" in
+            *[!A-Za-z0-9._/-]*)
+              echo "Preview branch contains unsupported characters: ${PAGES_BRANCH}" >&2
+              exit 1
+              ;;
+          esac
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
@@ -53,8 +73,11 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # github.head_ref is an action input, not interpolated into a shell.
-          command: pages deploy public --project-name=robthefritz --branch=${{ github.head_ref }}
+          # wrangler-action concatenates this into `npx wrangler <command>` and
+          # tokenizes with @actions/exec (child_process.spawn, no shell).
+          # toJSON keeps the env-provided branch one argv even if it had spaces;
+          # the guard step already rejected main and unsafe characters.
+          command: pages deploy public --project-name=robthefritz --branch=${{ toJSON(env.PAGES_BRANCH) }}
 
       - name: Comment preview URL
         if: steps.deploy.outputs.pages-deployment-alias-url || steps.deploy.outputs.deployment-url
@@ -64,6 +87,7 @@ jobs:
         with:
           script: |
             const marker = '<!-- cloudflare-pages-preview -->';
+            const botLogin = 'github-actions[bot]';
             const previewUrl = process.env.PREVIEW_URL || '';
             let parsed;
             try {
@@ -90,8 +114,11 @@ jobs:
               github.rest.issues.listComments,
               { owner, repo, issue_number },
             );
-            const existing = comments.find((comment) =>
-              comment.body?.includes(marker),
+            const existing = comments.find(
+              (comment) =>
+                comment.user?.login === botLogin &&
+                comment.user?.type === 'Bot' &&
+                comment.body?.includes(marker),
             );
 
             if (existing) {
