@@ -32,17 +32,11 @@ Then open [http://localhost:8000](http://localhost:8000) in your browser.
 
 You can also open `public/index.html` directly in a browser, though the theme toggle works better with a local server.
 
-## Cloudflare Pages Settings
+## Deploys
 
-When deploying to Cloudflare Pages:
+Merges to `main` auto-deploy `public/` (no build step) to the existing Cloudflare Pages project `robthefritz` (direct upload, production branch `main`) via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Same-repository pull requests get a Pages preview for the PR branch; the preview URL is posted on the PR and updated in place. Fork pull requests are not deployed.
 
-- **Build command:** (leave empty)
-- **Build output directory:** `public`
-- **Root directory:** `/`
-
-The site requires no build step. Cloudflare Pages will serve the contents of the `public/` directory directly.
-
-For the custom domain configuration, point `robthefritz.com` to your Cloudflare Pages deployment through the Cloudflare dashboard.
+GitHub Actions uses repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Point `robthefritz.com` at the Pages project in the Cloudflare dashboard.
 
 ## Features
 
