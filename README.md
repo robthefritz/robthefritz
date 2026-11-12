@@ -40,6 +40,8 @@ Merges to `main` auto-deploy `public/` (no build step) to the existing Cloudflar
 
 GitHub Actions uses repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Point `robthefritz.com` at the Pages project in the Cloudflare dashboard.
 
+Browsers cache `style.css` and the icons for up to 4 hours. When you change one, bump its `?v=` number in both `index.html` and `404.html` so visitors get the new file right away.
+
 ## Features
 
 - **Theme toggle:** Light/Dark/Auto modes with localStorage persistence and no-JS fallback
