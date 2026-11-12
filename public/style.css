@@ -126,11 +126,30 @@ header {
 }
 
 .header-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
   font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   font-weight: 600;
   font-size: 1.125rem;
   letter-spacing: 0.02em;
   color: var(--ink);
+  text-decoration: none;
+}
+
+.header-name:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.brand-mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+}
+
+.brand-mark-accent {
+  fill: var(--accent);
 }
 
 .header-right {
