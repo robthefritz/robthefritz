@@ -11,8 +11,10 @@ public/
 ├── index.html          # Main resume page
 ├── style.css           # Styles with light/dark mode support
 ├── llms.txt            # Plain-text summary of the site for AI agents/assistants
-├── favicon.svg         # SVG favicon
+├── logo.svg            # RF logo, master copy (ring + monogram)
+├── favicon.svg         # SVG favicon (adapts to light/dark tab bars)
 ├── favicon-32.png      # PNG favicon fallback
+├── apple-touch-icon.png # 180px home-screen icon
 ├── og-preview.png      # Open Graph preview image (1200x630)
 ├── og-preview.svg      # SVG source for preview
 ├── robots.txt          # Search engine directives
